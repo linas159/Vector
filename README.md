@@ -1,9 +1,11 @@
-Testavimas su funkcijomis:
+# Vector
 
 
-vector::swap
+### Testavimas su funkcijomis:
 
-Testavimo kodas:
+## vector::swap
+
+### Testavimo kodas:
 
     std::vector<int> foo(3, 100);
     std::vector<int> bar(5, 200);
@@ -35,7 +37,7 @@ Testavimo kodas:
         std::cout << ' ' << bar1[i];
     std::cout << '\n';
     
- Rezultatas:
+ ### Rezultatas:
  
     foo contains: 200 200 200 200 200
     bar contains: 100 100 100
@@ -43,9 +45,9 @@ Testavimo kodas:
     bar1 contains: 100 100 100
     
     
-vector::shrink_to_fit
+## vector::shrink_to_fit
 
-Testavimo kodas:
+### Testavimo kodas:
 
     std::vector<int> v (100);
     std::cout << "1. capacity of v: " << v.capacity() << '\n';
@@ -65,7 +67,7 @@ Testavimo kodas:
 
     v1.shrink_to_fit();
     std::cout << "3. capacity of v1: " << v1.capacity() << '\n';
-Rezultatas:
+### Rezultatas:
 
     1. capacity of v: 100
     2. capacity of v: 100
@@ -75,9 +77,9 @@ Rezultatas:
     3. capacity of v1: 10
     
     
-vector::resize
+## vector::resize
 
-Testavimo kodas:
+### Testavimo kodas:
 
     std::vector<int> v;
 
@@ -105,15 +107,15 @@ Testavimo kodas:
     for (int i=0;i<v1.size();i++)
         std::cout << ' ' << v1[i];
     std::cout << '\n';
-Rezultatas:
+### Rezultatas:
 
     v contains: 1 2 3 4 5 100 100 100 0 0 0 0
     v1 contains: 1 2 3 4 5 100 100 100 0 0 0 0
 
 
-vector::erase
+## vector::erase
 
-Testavimo kodas:
+### Testavimo kodas:
 
     std::vector<int> v;
 
@@ -141,15 +143,15 @@ Testavimo kodas:
     for (unsigned i=0; i<v1.size(); ++i)
         std::cout << ' ' << v1[i];
     std::cout << '\n';
-Rezultatas:
+### Rezultatas:
 
     v contains: 4 5 7 8 9 10
     v1 contains: 4 5 7 8 9 10
     
     
-vector::empty
+## vector::empty
 
-Testavimo kodas:
+### Testavimo kodas:
 
     std::vector<int> numbers;
     std::cout << "Initially, numbers.empty(): " << numbers.empty() << '\n';
@@ -163,7 +165,7 @@ Testavimo kodas:
     numbers.push_back(42);
     std::cout << "After adding elements, numbers1.empty(): " << numbers1.empty() << '\n';
         
-Rezultatas:
+### Rezultatas:
 
     Initially, numbers.empty(): 1
     After adding elements, numbers.empty(): 0
@@ -171,10 +173,10 @@ Rezultatas:
     After adding elements, numbers1.empty(): 0
 
 
-Greicio lyginimas
+## Greicio lyginimas
 
 
-Testavimo kodas:
+### Testavimo kodas:
 
     void pushtestas1(int sz)
     {
@@ -208,6 +210,46 @@ Testavimo kodas:
        }
     }
   
- Rezultatai:
+ ### Rezultatai:
  
 ![image](https://user-images.githubusercontent.com/93277316/170740112-0015bb82-f736-4390-95a1-cab0b261d32b.png)
+
+
+## Atminties perskirstymas
+
+### Tetavimo kodas:
+
+    unsigned int sz = 100000000;
+    int p1 = 0, p2 = 0;
+
+    std::vector<int> v1;
+    for (int i = 1; i <= sz; ++i) {
+        v1.push_back(i);
+        if (v1.size() == v1.capacity())
+            p1++;
+    }
+
+    Vector<int> v2;
+    for (int i = 1; i <= sz; ++i) {
+        v2.push_back(i);
+        if (v2.size() == v2.capacity())
+            p2++;
+    }
+    cout << "p1: " << p1 << endl;
+    cout << "p2: " << p2;
+
+### Rezultatai:
+
+    p1: 46
+    p2: 25
+    
+## Spartos analizė
+
+### std::vector
+
+![image](https://user-images.githubusercontent.com/93277316/170785526-d621c551-62ea-408b-99c3-428a561f5ab4.png)
+
+
+### Vector
+
+![image](https://user-images.githubusercontent.com/93277316/170789149-db17d8b1-ff56-4b67-ab08-107c867a9b60.png)
