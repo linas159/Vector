@@ -39,7 +39,7 @@ public:
 		if (rhs.sz >sz) 
 		{
 			delete[] arr;
-			cap = rhs.sz + 5;
+			cap = rhs.sz;
 			arr = new T[cap];
 		}
 		for (int i = 0; i < rhs.sz; ++i)
@@ -187,6 +187,18 @@ public:
 		}
 		--sz;
 	}
+	void erase(int index, int index1)
+	{
+		for (int j = index; j < index1; j++)
+		{
+			for (int i = index; i < sz - 1; i++)
+			{
+				arr[i] = arr[i + 1];
+			}
+		--sz;
+		}
+		
+	}
 	void push_back(T value)
 	{
 		if (sz < cap)
@@ -247,7 +259,7 @@ public:
 		}
 		else
 		{
-			cap *= 2;
+			cap = sz;
 			oldsz = sz;
 			sz = size;
 			for (int i = oldsz; i < sz; i++)
@@ -270,7 +282,6 @@ public:
 		}
 		else
 		{
-			cap *= 2;
 			oldsz = sz;
 			sz = size;
 			for (int i = oldsz; i < sz; i++)

@@ -10,33 +10,15 @@ using namespace std;
 
 int main()
 {
-    std::vector<int> foo(3, 100);
-    std::vector<int> bar(5, 200);
+        std::vector<int> numbers;
+        std::cout << "Initially, numbers.empty(): " << numbers.empty() << '\n';
 
-    foo.swap(bar);
+        numbers.push_back(42);
+        std::cout << "After adding elements, numbers.empty(): " << numbers.empty() << '\n';
 
-    std::cout << "foo contains:";
-    for (unsigned i = 0; i < foo.size(); i++)
-        std::cout << ' ' << foo[i];
-    std::cout << '\n';
+        Vector<int> numbers1;
+        std::cout << "Initially, numbers1.empty(): " << numbers1.empty() << '\n';
 
-    std::cout << "bar contains:";
-    for (unsigned i = 0; i < bar.size(); i++)
-        std::cout << ' ' << bar[i];
-    std::cout << '\n';
-
-    Vector<int> foo1(3, 100);
-    Vector<int> bar1(5, 200);
-
-    foo1.swap(bar1);
-
-    std::cout << "foo1 contains:";
-    for (unsigned i = 0; i < foo1.size(); i++)
-        std::cout << ' ' << foo1[i];
-    std::cout << '\n';
-
-    std::cout << "bar1 contains:";
-    for (unsigned i = 0; i < bar1.size(); i++)
-        std::cout << ' ' << bar1[i];
-    std::cout << '\n';
+        numbers1.push_back(42);
+        std::cout << "After adding elements, numbers1.empty(): " << numbers1.empty() << '\n';
 }
